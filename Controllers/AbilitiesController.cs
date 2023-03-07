@@ -20,7 +20,6 @@ namespace DnDApi.Controllers
             _context = context;
         }
 
-        // GET: api/Abilities
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Ability>>> GetAbilities()
         {
@@ -31,7 +30,6 @@ namespace DnDApi.Controllers
             return await _context.Abilities.ToListAsync();
         }
 
-        // GET: api/Abilities/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Ability>> GetAbility(int id)
         {
@@ -59,8 +57,6 @@ namespace DnDApi.Controllers
             return await _context.Abilities.Where(c => c.Name.Contains(name)).ToListAsync();
         }
 
-        // PUT: api/Abilities/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAbility(int id, Ability ability)
         {
@@ -90,8 +86,6 @@ namespace DnDApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Abilities
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Ability>> PostAbility(Ability ability)
         {
@@ -105,7 +99,6 @@ namespace DnDApi.Controllers
             return CreatedAtAction("GetAbility", new { id = ability.Id }, ability);
         }
 
-        // DELETE: api/Abilities/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAbility(int id)
         {

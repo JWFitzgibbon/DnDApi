@@ -20,7 +20,6 @@ namespace DnDApi.Controllers
             _context = context;
         }
 
-        // GET: api/Characters
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Character>>> GetCharacters()
         {
@@ -31,7 +30,6 @@ namespace DnDApi.Controllers
             return await _context.Characters.ToListAsync();
         }
 
-        // GET: api/Characters/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Character>> GetCharacter(int id)
         {
@@ -59,8 +57,6 @@ namespace DnDApi.Controllers
             return await _context.Characters.Where(c => c.Name.Contains(name)).ToListAsync();
         }
 
-        // PUT: api/Characters/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCharacter(int id, Character character)
         {
@@ -90,8 +86,6 @@ namespace DnDApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Characters
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Character>> PostCharacter(Character character)
         {
@@ -105,7 +99,6 @@ namespace DnDApi.Controllers
             return CreatedAtAction("GetCharacter", new { id = character.Id }, character);
         }
 
-        // DELETE: api/Characters/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCharacter(int id)
         {
