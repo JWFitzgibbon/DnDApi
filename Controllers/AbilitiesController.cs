@@ -50,11 +50,11 @@ namespace DnDApi.Controllers
         [HttpGet("search")]
         public async Task<ActionResult<IEnumerable<Ability>>> GetAbilitiesByName([FromQuery] string name)
         {
-            if (_context.Characters == null)
+            if (_context.Abilities == null)
             {
                 return NotFound();
             }
-            return await _context.Abilities.Where(c => c.Name.Contains(name)).ToListAsync();
+            return await _context.Abilities.Where(a => a.Name.Contains(name)).ToListAsync();
         }
 
         [HttpPut("{id}")]
