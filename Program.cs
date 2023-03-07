@@ -1,4 +1,4 @@
-using DnDApi.Models;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

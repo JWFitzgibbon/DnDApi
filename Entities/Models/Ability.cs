@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace DnDApi.Models;
+namespace Entities.Models;
 
 public class Ability
 {

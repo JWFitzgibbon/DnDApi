@@ -1,6 +1,7 @@
+using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DnDApi.Models
+namespace Entities
 {
     public class RepositoryContext : DbContext
     {
