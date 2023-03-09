@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Entities;
 using Entities.Models;
 
-namespace DnDApi.Controllers
+namespace Controllers
 {
     [Route("[controller]")]
     [ApiController]
