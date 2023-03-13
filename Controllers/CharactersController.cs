@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Entities;
 using Entities.Models;
+using Entities;
 
-namespace Controllers
+namespace DnDApi.Controllers
 {
     [Route("[controller]")]
     [ApiController]
@@ -21,6 +21,7 @@ namespace Controllers
             _context = context;
         }
 
+        // Need to make a DTO for this its wasteful responding with stats when they're not displayed
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Character>>> GetCharacters()
         {
@@ -61,7 +62,7 @@ namespace Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCharacter(int id, Character character)
         {
-            if (id != character.Id)
+            if (id != character.CharacterId)
             {
                 return BadRequest();
             }
@@ -97,7 +98,7 @@ namespace Controllers
             _context.Characters.Add(character);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetCharacter", new { id = character.Id }, character);
+            return CreatedAtAction("GetCharacter", new { id = character.CharacterId }, character);
         }
 
         [HttpDelete("{id}")]
@@ -121,7 +122,7 @@ namespace Controllers
 
         private bool CharacterExists(int id)
         {
-            return (_context.Characters?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Characters?.Any(e => e.CharacterId == id)).GetValueOrDefault();
         }
     }
 }

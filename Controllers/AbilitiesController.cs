@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Entities;
 using Entities.Models;
+using Entities;
 
-namespace Controllers
+namespace DnDApi.Controllers
 {
     [Route("[controller]")]
     [ApiController]
@@ -61,7 +61,7 @@ namespace Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAbility(int id, Ability ability)
         {
-            if (id != ability.Id)
+            if (id != ability.AbilityId)
             {
                 return BadRequest();
             }
@@ -97,7 +97,7 @@ namespace Controllers
             _context.Abilities.Add(ability);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAbility", new { id = ability.Id }, ability);
+            return CreatedAtAction("GetAbility", new { id = ability.AbilityId }, ability);
         }
 
         [HttpDelete("{id}")]
@@ -121,7 +121,7 @@ namespace Controllers
 
         private bool AbilityExists(int id)
         {
-            return (_context.Abilities?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Abilities?.Any(e => e.AbilityId == id)).GetValueOrDefault();
         }
     }
 }
